@@ -39,7 +39,7 @@ class Vec:
 def dot(u, v):
     product = 0
     sum_of_product = 0
-    for i in range(len(u)):
+    for i in range(len(u)-1):
         product = u[i] * v[i]
         sum_of_product += product
     return sum_of_product
