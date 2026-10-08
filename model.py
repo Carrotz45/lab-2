@@ -55,13 +55,13 @@ class Particles:
 # Task (5/12): In the Particle class, implement a method inertial_move(self, dt).
 
     def inertial_move(self, dt):
-        return dt * (self.velocity + self.position)
+        return dt * self.velocity + self.position
 
 # Task (6/12): In the Particle class, implement a method apply_force(self, dt, f)
 
     def apply_force(self, dt, f):
         acceleration = f // self.mass
-        return dt * (acceleration + self.velocity)
+        return dt * acceleration + self.velocity
 
 ##########################################
 ### NB. Tasks 7–8 are done in view.py. ###
