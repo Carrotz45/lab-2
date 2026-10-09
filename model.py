@@ -37,12 +37,8 @@ class Vec:
 
 # Task (3/12): Additionally define a function dot(u, v)
 def dot(u, v):
-    product = 0
-    sum_of_product = 0
-    for i in range(len(u)):
-        product = u[i] * v[i]
-        sum_of_product += product
-    return sum_of_product
+    dot_product = (u.x * v.x) + (u.y * v.y)
+    return dot_product
 
 # Task (4/12): Create a class Particle
 class Particles:
