@@ -7,7 +7,7 @@ class Vec:
         self.y = y
         
     def __repr__(self): #return a string which is a suitable representation of the vector.
-        return f"{(self.x, self.y)}"
+        return f"({self.x}, {self.y})"
 
     def __rmul__(self, factor): #return a new vector scaled by the given factor
         mul_x = self.x * factor
@@ -22,8 +22,8 @@ class Vec:
         return vectors_added_xy
     
     def __sub__(self, other):
-        subbed_x = self.x + other.x
-        subbed_y = self.y + other.y
+        subbed_x = self.x - other.x
+        subbed_y = self.y - other.y
         vectors_subbed_xy = (subbed_x, subbed_y)
         return vectors_subbed_xy
     
@@ -37,15 +37,11 @@ class Vec:
 
 # Task (3/12): Additionally define a function dot(u, v)
 def dot(u, v): 
-    product = 0
-    sum_of_product = 0
-    for i in range(len(u)-1):
-        product = u[i] * v[i]
-        sum_of_product += product
-    return sum_of_product
+    dot_product = (u.x * v.x) + (u.y * v.y)
+    return dot_product
 
 # Task (4/12): Create a class Particle
-class Particles:
+class Particle:
     def __init__(self, mass, position, velocity, radius):
         self.mass = mass
         self.position = position
@@ -69,10 +65,11 @@ class Particles:
 
 
 # Task (9/12): In the Particle class, add a method bounding_box(self)
-
-
-
-
+    def bounding_box(self):
+        x, y = self.position
+        bound_1 = (x-self.radius, y+self.radius)
+        bound_2 = (x+self.radius, y-self.radius)
+        return (bound_1, bound_2)
 
 
 ###########################################
