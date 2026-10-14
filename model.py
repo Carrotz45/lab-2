@@ -36,7 +36,7 @@ class Vec:
     
 
 # Task (3/12): Additionally define a function dot(u, v)
-def dot(u, v):
+def dot(u, v): 
     product = 0
     sum_of_product = 0
     for i in range(len(u)-1):
