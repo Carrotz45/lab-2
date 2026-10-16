@@ -1,12 +1,12 @@
 from tkinter import *
 from model import *
-## Add this to the imports
-import time
 
 
 # Task (7/12): Draw on canvas
 
-
+root = Tk()
+canvas = Canvas(root, bg="white", width=800, height=600)
+canvas.pack()
 
 # Task (8/12): Define a new function to_canvas_coords(canvas, x)
 def to_canvas_coords(canvas, u):
@@ -44,10 +44,7 @@ def create_oval(canvas, particle):
     new_pos_bound1, new_pos_bound2 = particle.bounding_box()
 
     move_oval_to(canvas, oval, new_pos_bound1, new_pos_bound2)
-
-root = Tk()
-canvas = Canvas(root, bg="white", width=800, height=600)
-canvas.pack()
+    return oval
 
 
 # Task (12/12): Define a function simulation_loop(f, timestep, particles)
@@ -58,9 +55,15 @@ def simulation_loop(f, timestep, particles):
         oval_list.append(new_oval)
 
     while True:
+
+        f(timestep, particles, 10)
+        
         for particle in particles:
-            Particle.inertial_move(particle, timestep)
-            for oval in oval_list:
-                bound_1, bound_2 = particle.bounding_box()
-                oval = move_oval_to(canvas, oval, bound_1, bound_2)
-                canvas.update()
+            particle.inertial_move(timestep)
+            index = particles.index(particle)
+            oval = oval_list[index]
+            bound_1, bound_2 = particle.bounding_box()
+            oval = move_oval_to(canvas, oval, bound_1, bound_2)
+        canvas.update()
+
+

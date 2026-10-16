@@ -1,4 +1,5 @@
 import math
+from view import *
 
 # Task (2/12): Define a class Vec
 class Vec:
@@ -85,14 +86,16 @@ class Particle:
         return (bound_1, bound_2)
 
 
-###########################################
-### When you're done with all 12 tasks: ###
-### forces/other features in this file! ###
-###########################################
+# #########################################
+# # When you're done with all 12 tasks: ###
+# # forces/other features in this file! ###
+# #########################################
 
 
-# Feature Task: Define a function circular_arena
-# def circular_arena(dt, particles, k, R):
-#     for particle in particles:
-#         pass
-#     pass
+# Feature Task: 
+
+def constant_gravitational_field(dt, particles, g):
+    d = Vec(0, -1)
+    for particle in particles:
+        force = d.__rmul__(g * particle.mass)
+        particle.apply_force(dt, force)
